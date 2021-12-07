@@ -85,29 +85,86 @@ ingredients = {
       {group: "Total", value: 2.6}
     ],
     "beet-sugar": [
-      {group: "Land use change", value: 1.2},
+      {group: "Land use change", value: 0.0},
       {group: "Animal Feed", value: 0.0},
-      {group: "Farm", value: 0.5},
-      {group: "Processing", value: 0.0},
-      {group: "Transport", value: 0.8},
+      {group: "Farm", value: 0.0},
+      {group: "Processing", value: 0.5},
+      {group: "Transport", value: 0.6},
       {group: "Packging", value: 0.1},
       {group: "Retail", value: 0.0},
-      {group: "Total", value: 2.6}
+      {group: "Total", value: 1.4}
+    ],
+    "other-pulses": [
+      {group: "Land use change", value: 0.0},
+      {group: "Animal Feed", value: 0.0},
+      {group: "Farm", value: 1.1},
+      {group: "Processing", value: 0.0},
+      {group: "Transport", value: 0.1},
+      {group: "Packging", value: 0.4},
+      {group: "Retail", value: 0.0},
+      {group: "Total", value: 1.6}
+    ],
+    "peas": [
+      {group: "Land use change", value: 0.0},
+      {group: "Animal Feed", value: 0.0},
+      {group: "Farm", value: 0.7},
+      {group: "Processing", value: 0.0},
+      {group: "Transport", value: 0.1},
+      {group: "Packging", value: 0.0},
+      {group: "Retail", value: 0.0},
+      {group: "Total", value: 0.79}
+    ],
+    "nuts": [
+      {group: "Land use change", value: 0.0},
+      {group: "Animal Feed", value: 0.0},
+      {group: "Farm", value: 2.1},
+      {group: "Processing", value: 0.0},
+      {group: "Transport", value: 0.1},
+      {group: "Packging", value: 0.1},
+      {group: "Retail", value: 0.0},
+      {group: "Total", value: 0.2}
+    ],
+    "groundnuts": [
+      {group: "Land use change", value: 0.4},
+      {group: "Animal Feed", value: 0.0},
+      {group: "Farm", value: 1.4},
+      {group: "Processing", value: 0.4},
+      {group: "Transport", value: 0.1},
+      {group: "Packging", value: 0.1},
+      {group: "Retail", value: 0.0},
+      {group: "Total", value: 2.4}
+    ],
+    "soymilk": [
+      {group: "Land use change", value: 0.2},
+      {group: "Animal Feed", value: 0.0},
+      {group: "Farm", value: 0.1},
+      {group: "Processing", value: 0.2},
+      {group: "Transport", value: 0.1},
+      {group: "Packging", value: 0.1},
+      {group: "Retail", value: 0.3},
+      {group: "Total", value: 1}
+    ],
+    "tofu": [
+      {group: "Land use change", value: 1.0},
+      {group: "Animal Feed", value: 0.0},
+      {group: "Farm", value: 0.5},
+      {group: "Processing", value: 0.8},
+      {group: "Transport", value: 0.2},
+      {group: "Packging", value: 0.2},
+      {group: "Retail", value: 0.3},
+      {group: "Total", value: 3}
+    ],
+    "soybean-oil": [
+      {group: "Land use change", value: 3.1},
+      {group: "Animal Feed", value: 0.0},
+      {group: "Farm", value: 1.5},
+      {group: "Processing", value: 0.3},
+      {group: "Transport", value: 0.3},
+      {group: "Packging", value: 0.8},
+      {group: "Retail", value: 0.0},
+      {group: "Total", value: 5.99}
     ]
 }
-
-// create 2 data_set
-var data1 = [
-    {group: "A", value: 4},
-    {group: "B", value: 16},
-    {group: "C", value: 8}
- ];
- 
- var data2 = [
-    {group: "A", value: 7},
-    {group: "B", value: 1},
-    {group: "C", value: 20}
- ];
  
  // set the dimensions and margins of the graph
  var margin = {top: 30, right: 30, bottom: 70, left: 60},
@@ -151,7 +208,6 @@ function onCategoryChanged() {
 
  // A function that create / update the plot for a given variable:
  function update(category) {
-     
     data = ingredients[category];
     console.log("updated data");
     console.log(ingredients[category]);
