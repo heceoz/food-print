@@ -1,23 +1,98 @@
 d3.csv("Food_Production.csv").then(function(d) {
     food_data = d;
-    var data1 = [
-        {group: "A", value: food_data[0]['Animal Feed']},
-        {group: "B", value: food_data[0]['Farm']},
-        {group: "C", value: food_data[0]['Transport']}
-     ];
     // update(data1)
 });
 
 ingredients = {
     "wheat-and-rye": [
-        {group: "A", value: 10},
-        {group: "B", value: 12},
-        {group: "C", value: 9}
+        {group: "Land use change", value: 0.1},
+        {group: "Animal Feed", value: 0},
+        {group: "Farm", value: 0.8},
+        {group: "Processing", value: 0.2},
+        {group: "Transport", value: 0.1},
+        {group: "Packging", value: 0.1},
+        {group: "Retail", value: 0.1},
+        {group: "Total", value: 1.4}
     ],
     "maize": [
-        {group: "A", value: 19},
-        {group: "B", value: 9},
-        {group: "C", value: 1}
+        {group: "Land use change", value: 0.3},
+        {group: "Animal Feed", value: 0},
+        {group: "Farm", value: 0.5},
+        {group: "Processing", value: 0.1},
+        {group: "Transport", value: 0.1},
+        {group: "Packging", value: 0.1},
+        {group: "Retail", value: 0.0},
+        {group: "Total", value: 1.1}
+    ],
+    "barley": [
+        {group: "Land use change", value: 0.0},
+        {group: "Animal Feed", value: 0},
+        {group: "Farm", value: 0.2},
+        {group: "Processing", value: 0.1},
+        {group: "Transport", value: 0.0},
+        {group: "Packging", value: 0.5},
+        {group: "Retail", value: 0.3},
+        {group: "Total", value: 1.1}
+    ],
+    "oatmeal": [
+        {group: "Land use change", value: 0.0},
+        {group: "Animal Feed", value: 0},
+        {group: "Farm", value: 1.4},
+        {group: "Processing", value: 0.0},
+        {group: "Transport", value: 0.1},
+        {group: "Packging", value: 0.1},
+        {group: "Retail", value: 0.0},
+        {group: "Total", value: 1.6}
+    ],
+    "rice": [
+      {group: "Land use change", value: 0.0},
+      {group: "Animal Feed", value: 0},
+      {group: "Farm", value: 3.6},
+      {group: "Processing", value: 0.1},
+      {group: "Transport", value: 0.1},
+      {group: "Packging", value: 0.1},
+      {group: "Retail", value: 0.1},
+      {group: "Total", value: 4.0}
+    ],
+    "potatoes": [
+      {group: "Land use change", value: 0.0},
+      {group: "Animal Feed", value: 0.0},
+      {group: "Farm", value: 0.2},
+      {group: "Processing", value: 0.0},
+      {group: "Transport", value: 0.1},
+      {group: "Packging", value: 0.0},
+      {group: "Retail", value: 0.0},
+      {group: "Total", value: 0.3}
+    ],
+    "cassava": [
+      {group: "Land use change", value: 0.6},
+      {group: "Animal Feed", value: 0.0},
+      {group: "Farm", value: 0.2},
+      {group: "Processing", value: 0.0},
+      {group: "Transport", value: 0.1},
+      {group: "Packging", value: 0.0},
+      {group: "Retail", value: 0.0},
+      {group: "Total", value: 0.9}
+    ],
+    "cane-sugar": [
+      {group: "Land use change", value: 1.2},
+      {group: "Animal Feed", value: 0.0},
+      {group: "Farm", value: 0.5},
+      {group: "Processing", value: 0.0},
+      {group: "Transport", value: 0.8},
+      {group: "Packging", value: 0.1},
+      {group: "Retail", value: 0.0},
+      {group: "Total", value: 2.6}
+    ],
+    "beet-sugar": [
+      {group: "Land use change", value: 1.2},
+      {group: "Animal Feed", value: 0.0},
+      {group: "Farm", value: 0.5},
+      {group: "Processing", value: 0.0},
+      {group: "Transport", value: 0.8},
+      {group: "Packging", value: 0.1},
+      {group: "Retail", value: 0.0},
+      {group: "Total", value: 2.6}
     ]
 }
 
@@ -36,7 +111,7 @@ var data1 = [
  
  // set the dimensions and margins of the graph
  var margin = {top: 30, right: 30, bottom: 70, left: 60},
-     width = 460 - margin.left - margin.right,
+     width = 660 - margin.left - margin.right,
      height = 400 - margin.top - margin.bottom;
  
  // append the svg object to the body of the page
@@ -51,7 +126,7 @@ var data1 = [
  // X axis
  var x = d3.scaleBand()
    .range([ 0, width ])
-   .domain(data1.map(function(d) { return d.group; }))
+   .domain(ingredients["wheat-and-rye"].map(function(d) { return d.group; }))
    .padding(0.2);
  svg.append("g")
    .attr("transform", "translate(0," + height + ")")
@@ -59,7 +134,7 @@ var data1 = [
  
  // Add Y axis
  var y = d3.scaleLinear()
-   .domain([0, 20])
+   .domain([0, 5])
    .range([ height, 0]);
  svg.append("g")
    .attr("class", "myYaxis")
@@ -78,7 +153,8 @@ function onCategoryChanged() {
  function update(category) {
      
     data = ingredients[category];
-    console.log(ingredients);
+    console.log("updated data");
+    console.log(ingredients[category]);
     var u = svg.selectAll("rect")
         .data(data)
 
@@ -97,4 +173,3 @@ function onCategoryChanged() {
  
  update("wheat-and-rye")
  // Initialize the plot with the first dataset
-//  update(data1)
