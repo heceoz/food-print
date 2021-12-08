@@ -1,7 +1,7 @@
 // set the dimensions and margins of the graph
 var margin = {top: 10, right: 30, bottom: 20, left: 50},
     width = 460 - margin.left - margin.right,
-    height = 400 - margin.top - margin.bottom;
+    height = 500 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
 var svg = d3.select("#my_dataviz")
@@ -12,9 +12,17 @@ var svg = d3.select("#my_dataviz")
     .attr("transform",
           "translate(" + margin.left + "," + margin.top + ")");
 
+    var toolTip = d3.tip()
+    .attr("class", "d3-tip")
+    .offset([-12, 0])
+    .html(function(d) {
+        return "<h5>"+d['foodName']+"</h5>";
+    });
+      svg.call(toolTip);
+
 // Parse the Data
 d3.csv("processed_data/id_food_prod.csv", dataPreprocessor, function(data) {
-    console.log(data);
+    // console.log(data);
   // List of subgroups = header of the csv files = soil condition here
   // var subgroups = data.columns.slice(1)
   // console.log(subgroups)
@@ -28,11 +36,18 @@ d3.csv("processed_data/id_food_prod.csv", dataPreprocessor, function(data) {
   })
   .entries(data);
 
-console.log(nested);
+  // console.log(nested);
 
   // List of groups = species here = value of the first column called group -> I show them on the X axis
   var groups = d3.map(data, function(d){return(d.category)}).keys()
-  console.log(groups)
+  // console.log(groups)
+
+  let total = {};
+  groups.forEach(g => {
+    let sum = categoryTotal(nested, g);
+    total[g] = sum;
+  })
+  console.log(total);
 
   // Add X axis
   var x = d3.scaleBand()
@@ -45,7 +60,7 @@ console.log(nested);
 
   // Add Y axis
   var y = d3.scaleLinear()
-    .domain([0, 60])
+    .domain([0, 175])
     .range([ height, 0 ]);
   svg.append("g")
     .call(d3.axisLeft(y));
@@ -57,31 +72,44 @@ console.log(nested);
 
   //stack the data? --> stack per subgroup
   // var stackedData = d3.stack()
-  //   .keys(nested.food)
+  //   .keys(d =>d.category)
   //   (data)
+  //   console.log(stackedData);
 
   // Show the bars
-  svg.append("g")
+  let bargroup = svg.append("g")
     .selectAll("g")
     // Enter in the stack data = loop key per key = group per group
     .data(nested)
-    .enter().append("g")
-      .attr("fill", function(d) { return color(d.key); })
+    
+    let bargroupEnter = bargroup.enter().append("g")
       .selectAll("rect")
       // enter a second time = loop subgroup per subgroup to add all rectangles
-      .data(function(d) { console.log(d.value.food); return d.value.food; })
+      .data(function(d) { return d.value.food; })
       .enter().append("rect")
-        .attr("x", function(d,i) { return i  })
-        .attr("y", function(d) { return y(d.emissionTot); })
-        .attr("height", function(d) { return y(d[0]) - y(d[1]); })
-        .attr("width",x.bandwidth())
+        .attr("x", function(d,i) { return x(d.category);  })
+        .attr("y", function(d) { return y(0)- (y(d.emissionTot) - y(total[d.category])); })
+        .attr("height", function(d) { return  y(d.emissionTot) - y(total[d.category]); })
+        .attr("width", x.bandwidth())
+        .attr("fill", function(d) { return color(d.foodName); })
+
+      bargroupEnter.on('mouseover', toolTip.show)
+      .on('mouseout', toolTip.hide);
+
+  bargroup.exit().remove();
 })
 
 function dataPreprocessor(row) {
-  console.log(row['Total_emissions']);
   return {
       category: row.category,
       foodName: row['Food product'],
       emissionTot: parseFloat(row.Total_emissions)
   };
+}
+
+function categoryTotal(data, category) {
+  let sum = 0.0;
+  let filtered = data.filter(d => d.key === category)[0].value.food;
+  filtered.forEach(f => {sum += f.emissionTot});
+  return sum;
 }
