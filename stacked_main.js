@@ -23,7 +23,7 @@ var svg = d3.select("#my_dataviz")
 let total = {};
 // Parse the Data
 d3.csv("processed_data/id_food_prod.csv", dataPreprocessor, function(data) {
-    // console.log(data);
+  console.log(data);
   // List of subgroups = header of the csv files = soil condition here
   // var subgroups = data.columns.slice(1)
   // console.log(subgroups)
