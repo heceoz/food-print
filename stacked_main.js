@@ -13,7 +13,7 @@ var svg = d3.select("#my_dataviz")
           "translate(" + margin.left + "," + margin.top + ")");
 
 // Parse the Data
-d3.csv("processed_data/id_food_prod.csv", function(data) {
+d3.csv("processed_data/id_food_prod.csv", dataPreprocessor, function(data) {
     console.log(data);
   // List of subgroups = header of the csv files = soil condition here
   // var subgroups = data.columns.slice(1)
@@ -72,15 +72,16 @@ console.log(nested);
       .data(function(d) { console.log(d.value.food); return d.value.food; })
       .enter().append("rect")
         .attr("x", function(d,i) { return i  })
-        .attr("y", function(d) { if(d.Total_emission !== NaN) { return y(parseFloat(d.Total_emission)); } else {return y(0)} })
+        .attr("y", function(d) { return y(d.emissionTot); })
         .attr("height", function(d) { return y(d[0]) - y(d[1]); })
         .attr("width",x.bandwidth())
 })
 
 function dataPreprocessor(row) {
+  console.log(row['Total_emissions']);
   return {
       category: row.category,
       foodName: row['Food product'],
-      emissionTot: parseFloat(row.Total_emission)
+      emissionTot: parseFloat(row.Total_emissions)
   };
 }
