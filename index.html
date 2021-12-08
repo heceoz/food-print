@@ -4,14 +4,27 @@
     <meta charset="UTF-8">
     <title>Project - Jaimie, Isabella, Hatice</title>
     <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 </head>
 <body>
+    <h1>Your Food Print: Greenhouse Gases in Food</h1>
     <div id="main">
-        <svg width="700" height="700">
-        </svg>
+        <div id='svg_containers'>
+            <div id="my_dataviz"></div>
+            <div id='your_dataviz'></div>
+        </div>
+        <label for="categorySelect">Show: </label>
+        <select class="custom-select" id="categorySelect" onchange="onCategoryChanged()">
+        </select>
+        <section>
+            <p id='note-title'>Some notes</p>
+            <p>Some values that were initially negative in our data were changed to 0 in "Greenhouse Emissions of Different Ingredients".</p>
+            <p>Categories were made by us, based on food groups and overall usage.</p>
+            <p>Our data was sourced from <a href='https://www.kaggle.com/selfvivek/choose-your-food-wisely/data'>Vivek on Kaggle</a>.</p>
+        </section>
     </div>
 </body>
-<script src="//d3js.org/d3.v4.min.js"></script>
-<!-- <script src="./d3-tip.js"></script> -->
+<script src="//d3js.org/d3.v4.js"></script>
+<script src="./d3-tip.js"></script>
 <script src="./main.js"></script>
 </html>

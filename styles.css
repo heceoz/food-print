@@ -5,3 +5,37 @@ input {
 form {
   margin: 20px 50px;
 }
+
+.axis-label {
+  text-anchor: middle;
+  font-size: 12px;
+  font-weight: semibold;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  margin: 0;
+}
+
+#main {
+  margin: 20px;
+}
+
+#svg_containers {
+  display: flex;
+}
+
+h1 {
+  text-align: center;
+  margin: 20px;
+  font-size: 15px;
+}
+
+section {
+  margin: 20px;
+}
+
+#note-title {
+  text-decoration: underline;
+  font-size: 1.5rem;
+}
