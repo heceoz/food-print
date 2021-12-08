@@ -163,7 +163,277 @@ ingredients = {
       {group: "Packging", value: 0.8},
       {group: "Retail", value: 0.0},
       {group: "Total", value: 5.99}
-    ]
+    ],
+    "palm-oil": [
+      {group: "Land use change", value: 3.1},
+      {group: "Animal Feed", value: 0.0},
+      {group: "Farm", value: 2.1},
+      {group: "Processing", value: 1.3},
+      {group: "Transport", value: 0.2},
+      {group: "Packging", value: 0.9},
+      {group: "Retail", value: 0.0},
+      {group: "Total", value: 7.6}
+    ],
+    "sunflower-oil": [
+      {group: "Land use change", value: 0.1},
+      {group: "Animal Feed", value: 0.0},
+      {group: "Farm", value: 2.1},
+      {group: "Processing", value: 0.2},
+      {group: "Transport", value: 0.2},
+      {group: "Packging", value: 0.9},
+      {group: "Retail", value: 0.0},
+      {group: "Total", value: 3.5}
+    ],
+    "rapeseed-oil": [
+      {group: "Land use change", value: 0.2},
+      {group: "Animal Feed", value: 0.0},
+      {group: "Farm", value: 2.3},
+      {group: "Processing", value: 0.2},
+      {group: "Transport", value: 0.2},
+      {group: "Packging", value: 0.8},
+      {group: "Retail", value: 0.0},
+      {group: "Total", value: 3.7}
+    ],
+    "olive-oil": [
+      {group: "Land use change", value: 0.0},
+      {group: "Animal Feed", value: 0.0},
+      {group: "Farm", value: 4.3},
+      {group: "Processing", value: 0.7},
+      {group: "Transport", value: 0.5},
+      {group: "Packging", value: 0.9},
+      {group: "Retail", value: 0.0},
+      {group: "Total", value: 6.0}
+    ],
+    "tomatoes": [
+      {group: "Land use change", value: 0.4},
+      {group: "Animal Feed", value: 0.0},
+      {group: "Farm", value: 0.7},
+      {group: "Processing", value: 0.0},
+      {group: "Transport", value: 0.2},
+      {group: "Packging", value: 0.1},
+      {group: "Retail", value: 0.0},
+      {group: "Total", value: 1.4}
+    ],
+    "onion-leaks": [
+      {group: "Land use change", value: 0.0},
+      {group: "Animal Feed", value: 0.0},
+      {group: "Farm", value: 0.2},
+      {group: "Processing", value: 0.0},
+      {group: "Transport", value: 0.1},
+      {group: "Packging", value: 0.0},
+      {group: "Retail", value: 0.0},
+      {group: "Total", value: 0.3}
+    ],
+    "root-vegetables": [
+      {group: "Land use change", value: 0.0},
+      {group: "Animal Feed", value: 0.0},
+      {group: "Farm", value: 0.2},
+      {group: "Processing", value: 0.0},
+      {group: "Transport", value: 0.1},
+      {group: "Packging", value: 0.0},
+      {group: "Retail", value: 0.0},
+      {group: "Total", value: 0.3}
+    ],
+    "brassicas": [
+      {group: "Land use change", value: 0.0},
+      {group: "Animal Feed", value: 0.0},
+      {group: "Farm", value: 0.3},
+      {group: "Processing", value: 0.0},
+      {group: "Transport", value: 0.1},
+      {group: "Packging", value: 0.0},
+      {group: "Retail", value: 0.0},
+      {group: "Total", value: 0.4}
+    ],
+    "other-vegetables": [
+      {group: "Land use change", value: 0.0},
+      {group: "Animal Feed", value: 0.0},
+      {group: "Farm", value: 0.2},
+      {group: "Processing", value: 0.1},
+      {group: "Transport", value: 0.2},
+      {group: "Packging", value: 0.0},
+      {group: "Retail", value: 0.0},
+      {group: "Total", value: 0.5}
+    ],
+    "citrus-fruit": [
+      {group: "Land use change", value: 0.0},
+      {group: "Animal Feed", value: 0.0},
+      {group: "Farm", value: 0.3},
+      {group: "Processing", value: 0.0},
+      {group: "Transport", value: 0.1},
+      {group: "Packging", value: 0.0},
+      {group: "Retail", value: 0.0},
+      {group: "Total", value: 0.3}
+    ],
+    "bananas": [
+      {group: "Land use change", value: 0.0},
+      {group: "Animal Feed", value: 0.0},
+      {group: "Farm", value: 0.3},
+      {group: "Processing", value: 0.1},
+      {group: "Transport", value: 0.3},
+      {group: "Packging", value: 0.1},
+      {group: "Retail", value: 0.0},
+      {group: "Total", value: 0.79}
+    ],
+    "apples": [
+      {group: "Land use change", value: 0.0},
+      {group: "Animal Feed", value: 0.0},
+      {group: "Farm", value: 0.2},
+      {group: "Processing", value: 0.0},
+      {group: "Transport", value: 0.1},
+      {group: "Packging", value: 0.0},
+      {group: "Retail", value: 0.0},
+      {group: "Total", value: 0.3}
+    ],
+    "berries-grape": [
+      {group: "Land use change", value: 0.0},
+      {group: "Animal Feed", value: 0.0},
+      {group: "Farm", value: 0.7},
+      {group: "Processing", value: 0.0},
+      {group: "Transport", value: 0.2},
+      {group: "Packging", value: 0.2},
+      {group: "Retail", value: 0.0},
+      {group: "Total", value: 1.09}
+    ],
+    "wine": [
+      {group: "Land use change", value: 0.0},
+      {group: "Animal Feed", value: 0.0},
+      {group: "Farm", value: 0.6},
+      {group: "Processing", value: 0.1},
+      {group: "Transport", value: 0.1},
+      {group: "Packging", value: 0.7},
+      {group: "Retail", value: 0.0},
+      {group: "Total", value: 1.4}
+    ],
+    "other-fruit": [
+      {group: "Land use change", value: 0.1},
+      {group: "Animal Feed", value: 0.0},
+      {group: "Farm", value: 0.4},
+      {group: "Processing", value: 0.0},
+      {group: "Transport", value: 0.2},
+      {group: "Packging", value: 0.0},
+      {group: "Retail", value: 0.0},
+      {group: "Total", value: 0.7}
+    ],
+    "coffee": [
+      {group: "Land use change", value: 3.7},
+      {group: "Animal Feed", value: 0.0},
+      {group: "Farm", value: 10.4},
+      {group: "Processing", value: 0.6},
+      {group: "Transport", value: 0.1},
+      {group: "Packging", value: 1.6},
+      {group: "Retail", value: 0.1},
+      {group: "Total", value: 16.5}
+    ],
+    "dark-chocolate": [
+      {group: "Land use change", value: 14.3},
+      {group: "Animal Feed", value: 0.0},
+      {group: "Farm", value: 3.7},
+      {group: "Processing", value: 0.2},
+      {group: "Transport", value: 0.1},
+      {group: "Packging", value: 0.4},
+      {group: "Retail", value: 0.0},
+      {group: "Total", value: 18.7}
+    ],
+    "beef-herd": [
+      {group: "Land use change", value: 16.3},
+      {group: "Animal Feed", value: 1.9},
+      {group: "Farm", value: 39.4},
+      {group: "Processing", value: 1.3},
+      {group: "Transport", value: 0.3},
+      {group: "Packging", value: 0.2},
+      {group: "Retail", value: 0.2},
+      {group: "Total", value: 59.599}
+    ],
+    "beef-dairy": [
+      {group: "Land use change", value: 0.9},
+      {group: "Animal Feed", value: 2.5},
+      {group: "Farm", value: 15.7},
+      {group: "Processing", value: 1.1},
+      {group: "Transport", value: 0.4},
+      {group: "Packging", value: 0.3},
+      {group: "Retail", value: 0.2},
+      {group: "Total", value: 21.09}
+    ],
+    "lamb-mutton": [
+      {group: "Land use change", value: 0.5},
+      {group: "Animal Feed", value: 2.4},
+      {group: "Farm", value: 19.5},
+      {group: "Processing", value: 1.1},
+      {group: "Transport", value: 0.5},
+      {group: "Packging", value: 0.3},
+      {group: "Retail", value: 0.2},
+      {group: "Total", value: 24.5}
+    ],
+    "pork": [
+      {group: "Land use change", value: 1.5},
+      {group: "Animal Feed", value: 2.9},
+      {group: "Farm", value: 1.7},
+      {group: "Processing", value: 0.3},
+      {group: "Transport", value: 0.3},
+      {group: "Packging", value: 0.3},
+      {group: "Retail", value: 0.2},
+      {group: "Total", value: 7.2}
+    ],
+    "poultry-meat": [
+      {group: "Land use change", value: 2.5},
+      {group: "Animal Feed", value: 1.8},
+      {group: "Farm", value: 0.7},
+      {group: "Processing", value: 0.4},
+      {group: "Transport", value: 0.3},
+      {group: "Packging", value: 0.2},
+      {group: "Retail", value: 0.2},
+      {group: "Total", value: 6.1}
+    ],
+    "milk": [
+      {group: "Land use change", value: 0.5},
+      {group: "Animal Feed", value: 0.2},
+      {group: "Farm", value: 1.5},
+      {group: "Processing", value: 0.1},
+      {group: "Transport", value: 0.1},
+      {group: "Packging", value: 0.1},
+      {group: "Retail", value: 0.3},
+      {group: "Total", value: 2.8}
+    ],
+    "cheese": [
+      {group: "Land use change", value: 4.5},
+      {group: "Animal Feed", value: 2.3},
+      {group: "Farm", value: 13.1},
+      {group: "Processing", value: 0.7},
+      {group: "Transport", value: 0.1},
+      {group: "Packging", value: 0.2},
+      {group: "Retail", value: 0.3},
+      {group: "Total", value: 21.2}
+    ],
+    "eggs": [
+      {group: "Land use change", value: 0.7},
+      {group: "Animal Feed", value: 2.2},
+      {group: "Farm", value: 1.3},
+      {group: "Processing", value: 0.0},
+      {group: "Transport", value: 0.1},
+      {group: "Packging", value: 0.2},
+      {group: "Retail", value: 0.0},
+      {group: "Total", value: 4.5}
+    ],
+    "fish-farmed": [
+      {group: "Land use change", value: 0.5},
+      {group: "Animal Feed", value: 0.8},
+      {group: "Farm", value: 3.6},
+      {group: "Processing", value: 0.0},
+      {group: "Transport", value: 0.1},
+      {group: "Packging", value: 0.1},
+      {group: "Retail", value: 0.0},
+      {group: "Total", value: 5.1}
+    ],
+    "shrimp-farmed": [
+      {group: "Land use change", value: 0.2},
+      {group: "Animal Feed", value: 2.5},
+      {group: "Farm", value: 8.4},
+      {group: "Processing", value: 0},
+      {group: "Transport", value: 0.2},
+      {group: "Packging", value: 0.3},
+      {group: "Retail", value: 0.2},
+      {group: "Total", value: 11.8}
+    ]     
 }
  
  // set the dimensions and margins of the graph
