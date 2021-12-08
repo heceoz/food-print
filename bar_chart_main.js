@@ -1,7 +1,7 @@
  // set the dimensions and margins of the graph
  var margin = {top: 30, right: 30, bottom: 70, left: 60},
      width = 660 - margin.left - margin.right,
-     height = 660 - margin.top - margin.bottom;
+     height = 860 - margin.top - margin.bottom;
  
  // append the svg object to the body of the page
  var svg = d3.select("#my_dataviz")
@@ -16,6 +16,8 @@ let cleanMap = {};
 let x;
 let y;
 
+
+
 d3.csv("processed_data/id_food_prod.csv", function(data) {
   var subgroups = data.columns.slice(1,9);
 
@@ -24,7 +26,13 @@ d3.csv("processed_data/id_food_prod.csv", function(data) {
     return datum;
   })
 
+  var select = document.getElementById('categorySelect');
   data.forEach((d,i) => {
+    var opt = document.createElement('option');
+    console.log(d['Food product'])
+    opt.value = d['Food product'];
+    opt.innerHTML = d['Food product'];
+    select.appendChild(opt);
     cleanMap[d['Food product']] = clean[i];
   })
 
@@ -42,7 +50,7 @@ x = d3.scaleBand()
  
  // Add Y axis
  y = d3.scaleLinear()
-   .domain([0, 10])
+   .domain([0, 25])
    .range([ height, 0]);
 
  svg.append("g")
