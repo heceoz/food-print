@@ -20,6 +20,7 @@ var svg = d3.select("#my_dataviz")
     });
       svg.call(toolTip);
 
+let total = {};
 // Parse the Data
 d3.csv("processed_data/id_food_prod.csv", dataPreprocessor, function(data) {
     // console.log(data);
@@ -42,13 +43,6 @@ d3.csv("processed_data/id_food_prod.csv", dataPreprocessor, function(data) {
   var groups = d3.map(data, function(d){return(d.category)}).keys()
   // console.log(groups)
 
-  let total = {};
-  groups.forEach(g => {
-    let sum = categoryTotal(nested, g);
-    total[g] = sum;
-  })
-  console.log(total);
-
   // Add X axis
   var x = d3.scaleBand()
       .domain(groups)
@@ -61,7 +55,7 @@ d3.csv("processed_data/id_food_prod.csv", dataPreprocessor, function(data) {
   // Add Y axis
   var y = d3.scaleLinear()
     .domain([0, 175])
-    .range([ height, 0 ]);
+    .range([height, 0]);
   svg.append("g")
     .call(d3.axisLeft(y));
   // color palette = one color per subgroup
@@ -72,8 +66,8 @@ d3.csv("processed_data/id_food_prod.csv", dataPreprocessor, function(data) {
 
   //stack the data? --> stack per subgroup
   // var stackedData = d3.stack()
-  //   .keys(d =>d.category)
-  //   (data)
+  //   .keys(d => d.emissionTot)
+  //   (nested)
   //   console.log(stackedData);
 
   // Show the bars
@@ -87,9 +81,10 @@ d3.csv("processed_data/id_food_prod.csv", dataPreprocessor, function(data) {
       // enter a second time = loop subgroup per subgroup to add all rectangles
       .data(function(d) { return d.value.food; })
       .enter().append("rect")
+      .attr('id', d => d.foodName)
         .attr("x", function(d,i) { return x(d.category);  })
-        .attr("y", function(d) { return y(0)- (y(d.emissionTot) - y(total[d.category])); })
-        .attr("height", function(d) { return  y(d.emissionTot) - y(total[d.category]); })
+        .attr("y", function(d) { return y(d.next); })
+        .attr("height", function(d) { return  y(d.prev) - y(d.next); })
         .attr("width", x.bandwidth())
         .attr("fill", function(d) { return color(d.foodName); })
 
@@ -100,16 +95,24 @@ d3.csv("processed_data/id_food_prod.csv", dataPreprocessor, function(data) {
 })
 
 function dataPreprocessor(row) {
-  return {
+  if (total[row.category]) {
+    let temp = total[row.category];
+    total[row.category] = total[row.category] + parseFloat(row.Total_emissions);
+    return {
       category: row.category,
       foodName: row['Food product'],
-      emissionTot: parseFloat(row.Total_emissions)
+      emissionTot: parseFloat(row.Total_emissions),
+      prev: temp,
+      next: total[row.category]
   };
-}
-
-function categoryTotal(data, category) {
-  let sum = 0.0;
-  let filtered = data.filter(d => d.key === category)[0].value.food;
-  filtered.forEach(f => {sum += f.emissionTot});
-  return sum;
+  } else {
+    total[row.category] = parseFloat(row.Total_emissions);
+    return {
+      category: row.category,
+      foodName: row['Food product'],
+      emissionTot: parseFloat(row.Total_emissions),
+      prev: 0,
+      next: total[row.category]
+  };
+  }
 }
